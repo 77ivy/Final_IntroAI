@@ -151,15 +151,17 @@ class Model(object):
             if self.top_words > self.dset.V:
                 self.top_words = self.dset.V
             for x in range(self.K):
-                ftwords.write('Topic ' + str(x) + 'th:\n')
+                #ftwords.write('Topic ' + str(x) + 'th:\n')
                 topic_words = []
                 for y in range(self.dset.V):
                     topic_words.append((y, self.phi[x][y]))
                 topic_words.sort(key=lambda x: x[1], reverse=True)
+                total=0  
                 for y in range(self.top_words):
+                    total+=topic_words[y][1]/self.top_words
                     word = self.dset.id2word[topic_words[y][0]]
-                    ftwords.write('\t' + word + '\t' + str(topic_words[y][1]) + '\n')
-
+                ftwords.write(str(total) + '\n')
+                
         with open(os.path.join(output_paths['tassign'], self.modelfile_suffix + '_tassign.txt'), 'w', encoding='utf-8') as ftassign:
             for x in range(self.dset.M):
                 for y in range(self.dset.docs[x].length):
