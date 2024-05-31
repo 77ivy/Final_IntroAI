@@ -20,8 +20,8 @@ def seg_sentence(sentence, stopwords):
 
 # 设置文件路径
 stopwords_file_path = r'C:/Users/ivy42/Downloads/pyLDA-1-master/pyLDA-1-master/stopWords/1893（utf8）.txt'
-input_dir = r'C:/Users/ivy42/Downloads/pyLDA-1-master/聯電'
-output_dir = 'output1'
+input_dir = r'C:\Users\ivy42\Downloads\電子_國碩-20240531T092306Z-001\電子_國碩'
+output_dir = 'output1_國碩'
 os.makedirs(output_dir, exist_ok=True)
 
 # 加载停用词
@@ -33,9 +33,17 @@ for filename in os.listdir(input_dir):
     
     # 检查是否为文件
     if os.path.isfile(input_filepath):
-        with open(input_filepath, 'r', encoding='utf-8') as inputs:
-            output_filepath = os.path.join(output_dir, f'processed_{filename}')
-            with open(output_filepath, 'w', encoding='utf-8') as outputs:
-                for line in inputs:
-                    line_seg = seg_sentence(line, stopwords)  # 这里的返回值是字符串
-                    outputs.write(line_seg + '\n')
+        try:
+            with open(input_filepath, 'r', encoding='utf-8') as inputs:
+                output_filepath = os.path.join(output_dir, f'processed_{filename}')
+                with open(output_filepath, 'w', encoding='utf-8') as outputs:
+                    for line in inputs:
+                        line_seg = seg_sentence(line, stopwords)  # 这里的返回值是字符串
+                        outputs.write(line_seg + '\n')
+            print(f"Processed file: {input_filepath}")
+        except Exception as e:
+            print(f"Failed to process file: {input_filepath}, error: {e}")
+    else:
+        print(f"Skipping non-file: {input_filepath}")
+
+print("Processing completed.")
