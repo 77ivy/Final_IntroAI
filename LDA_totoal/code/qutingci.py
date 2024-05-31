@@ -19,7 +19,7 @@ def seg_sentence(sentence, stopwords):
     return outstr
 
 # 设置文件路径
-stopwords_file_path = r'C:/Users/ivy42/Downloads/pyLDA-1-master/pyLDA-1-master/stopWords/1893（utf8）.txt'
+stopwords_file_path = r'C:\Users\ivy42\Downloads\LDA_totoal\code\stopWords\1893（utf8）.txt'
 input_dir = r'C:\Users\ivy42\Downloads\電子_國碩-20240531T092306Z-001\電子_國碩'
 output_dir = 'output1_國碩'
 os.makedirs(output_dir, exist_ok=True)
