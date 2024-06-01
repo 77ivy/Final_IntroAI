@@ -179,7 +179,10 @@ class Model(object):
 def read_files_in_folder(folder_path):
     files = os.listdir(folder_path)
     txt_files = [f for f in files if f.endswith('.txt')]
+    
+    txt_files.sort(key=lambda x: x.split('_')[1], reverse=True)
     return [os.path.join(folder_path, f) for f in txt_files]
+
 
 def lda_on_folder(folder_path):
     txt_files = read_files_in_folder(folder_path)

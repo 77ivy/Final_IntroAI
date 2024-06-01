@@ -3,3 +3,6 @@ numpy
 matplotlib
 torch
 transformers
+selenium
+bs4
+requests
